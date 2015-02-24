@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface RecruitDAO extends Repository<Recruit, Integer> {
 
-	List<Recruit> findAll(Recruit recruit);
+	List<Recruit> findAll();
 
 	Recruit save(Recruit recruit);
 
