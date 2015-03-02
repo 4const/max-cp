@@ -10,7 +10,7 @@ import ru.nstu.max.config.WebApplicationConfiguration;
 import ru.nstu.max.config.WebSecurityConfiguration;
 
 @SpringBootApplication
-@EntityScan("ru.nstu.nd.dance.model")
+@EntityScan("ru.nstu.max.model")
 @EnableJpaRepositories
 @EnableTransactionManagement
 public class Application extends SpringBootServletInitializer {
