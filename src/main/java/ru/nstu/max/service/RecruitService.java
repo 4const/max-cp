@@ -22,4 +22,8 @@ public class RecruitService {
 	public List<Recruit> findAll() {
 		return recruitDAO.findAll();
 	}
+
+	public void delete(Integer id) {
+		recruitDAO.delete(id);
+	}
 }
