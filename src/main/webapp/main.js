@@ -123,6 +123,7 @@ var onLogin = function(user) {
 			row.append($('<td>').text(r.id));
 			row.append($('<td>').text(r.lastName));
 			row.append($('<td>').text(r.firstName));
+			row.append($('<td>').text(r.dateOfBirth));
 			row.append($('<td>').text(calculateAge(new Date(r.dateOfBirth))));
 			row.append($('<td>').text(r.address));
 			row.append($('<td>').text(MARITAL_STATUSES[r.maritalStatusId]));
@@ -226,6 +227,24 @@ var onLogin = function(user) {
 		}).done(function(res) {
 			refreshRecruits();
 		});
+	});
+
+	$('#searchBtn').on('click', function() {
+		var searchString = $('#search').val();
+		searchString = searchString.split('*').join('([а-яА-Я\\d]*)')
+		searchString = searchString.split('?').join('([а-яА-Я\\d]?)')
+		var re = new RegExp(searchString, 'gi');
+
+		var filtered = __recruits.filter(function(s) {
+			return s.lastName.match(re) || s.firstName.match(re);
+		});
+
+		fillRecruitTable(filtered);
+	});
+
+	$('#searchResetBtn').on('click', function() {
+		var searchString = $('#search').val('');
+		fillRecruitTable(__recruits);
 	});
 
 	checkLogin();
